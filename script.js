@@ -472,3 +472,41 @@ window.addEventListener('load', () => {
         page: window.location.pathname
     });
 });
+
+const langToggle = document.getElementById("langToggle");
+
+// Textos en Español e Inglés
+const translations = {
+    es: {
+        heroTitle: "Encuentra tu vocación con Orientate+",
+        heroDesc: "Descubre qué carrera se adapta mejor a tus habilidades, intereses y personalidad.",
+        aboutText: "Somos una plataforma dedicada a ayudarte a descubrir tu camino profesional mediante pruebas vocacionales diseñadas para identificar tus talentos y preferencias reales.",
+        fundamentosIntro: "Nuestro modelo de orientación vocacional fue creado con el apoyo de profesionales en psicoterapia y orientación profesional, garantizando resultados confiables, éticos y emocionalmente seguros.",
+        expertDesc: "“El proceso de elección vocacional no se basa únicamente en los intereses profesionales. También intervienen factores emocionales, motivacionales y de autoconocimiento. Orientate+ integra criterios de la psicología humanista y vocacional moderna, permitiendo que cada estudiante reciba orientación precisa y coherente con su desarrollo personal.”",
+    },
+
+    en: {
+        heroTitle: "Find your vocation with Orientate+",
+        heroDesc: "Discover which career fits your skills, interests, and personality.",
+        aboutText: "We are a platform dedicated to helping you discover your professional path through vocational tests designed to identify your true talents and preferences.",
+        fundamentosIntro: "Our vocational orientation model was created with the support of psychotherapists and career guidance specialists, ensuring reliable, ethical, and emotionally safe results.",
+        expertDesc: "“The vocational decision-making process is not based solely on professional interests. Emotional, motivational, and self-knowledge factors also play a role. Orientate+ integrates principles from humanistic and modern vocational psychology, ensuring precise guidance aligned with each student's personal development.”",
+    }
+};
+
+let currentLang = "es";
+
+langToggle.addEventListener("click", () => {
+    currentLang = currentLang === "es" ? "en" : "es";
+    applyTranslations();
+});
+
+function applyTranslations() {
+    const t = translations[currentLang];
+
+    document.querySelector(".hero-text h2").textContent = t.heroTitle;
+    document.querySelector(".hero-text p").textContent = t.heroDesc;
+    document.querySelector("#sobre-nosotros p").textContent = t.aboutText;
+    document.querySelector(".fundamentos-intro").textContent = t.fundamentosIntro;
+    document.querySelector(".expert-desc").textContent = t.expertDesc;
+}
